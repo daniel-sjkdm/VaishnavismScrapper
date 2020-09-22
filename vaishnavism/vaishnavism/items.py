@@ -8,7 +8,9 @@ import scrapy
 
 class EkadasiItem(scrapy.Item):
     name = scrapy.Field()
-    date = scrapy.Field()
+    year = scrapy.Field()
+    day = scrapy.Field()
+    month = scrapy.Field()
     start = scrapy.Field()
     end = scrapy.Field()
 
