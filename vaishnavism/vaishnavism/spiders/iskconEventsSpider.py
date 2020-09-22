@@ -18,8 +18,15 @@ class iskconCalendarSpider(scrapy.Spider):
         for event in events:
             name = event.css("div.dpEventName::text").get()
             date = event.css("div.dpEventGregDate::text").get()
+            date = [ datefield.lstrip() for datefield in date.split(",") ]
+            month, day = date[0].split()
+            year = date[1]
+            day = date[2]
+
             event_item = IskconEventItem(
                 name = name,
-                date = date
+                day = day,
+                month = month,
+                year = year, 
             )
             yield event_item
