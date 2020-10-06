@@ -20,7 +20,7 @@ class EkadasiSpider(scrapy.Spider):
 
             date = event.css("div.dpEventDateTitle::text").get().split(",")
             month, _ = date[0].split()
-            year = date[1]
+            year = date[1].lstrip()
             day = date[2].lstrip()
             name = event.css("div.dpEventCardInfoTitle::text").get()
             start = re.findall("\d+:\d+", event.css("div::text")[-4].get())
