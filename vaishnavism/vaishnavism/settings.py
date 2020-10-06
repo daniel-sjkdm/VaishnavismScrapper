@@ -63,7 +63,8 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'vaishnavism.pipelines.VaishnavismPipeline': 300,
+    #'vaishnavism.pipelines.VaishnavismPipeline': 300,
+    'vaishnavism.pipelines.VaishnavismPipelinePG': 300
 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
