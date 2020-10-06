@@ -11,8 +11,8 @@ class EkadasiItem(scrapy.Item):
     year = scrapy.Field()
     day = scrapy.Field()
     month = scrapy.Field()
-    start = scrapy.Field()
-    end = scrapy.Field()
+    starts = scrapy.Field()
+    ends = scrapy.Field()
 
 
 class IskconEventItem(scrapy.Item):
