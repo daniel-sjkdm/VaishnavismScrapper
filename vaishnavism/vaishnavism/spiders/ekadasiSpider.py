@@ -23,16 +23,16 @@ class EkadasiSpider(scrapy.Spider):
             year = date[1].lstrip()
             day = date[2].lstrip()
             name = event.css("div.dpEventCardInfoTitle::text").get()
-            start = re.findall("\d+:\d+", event.css("div::text")[-4].get())
-            end = re.findall("\d+:\d+", event.css("div::text")[-2].get())
+            starts = re.findall("\d+:\d+", event.css("div::text")[-4].get())
+            ends = re.findall("\d+:\d+", event.css("div::text")[-2].get())
 
             ekadashi_item = EkadasiItem(
                 month = month,
                 year = year,
                 day = day,
                 name = name,
-                start = start,
-                end = end
+                starts = starts,
+                ends = ends
             )
 
             yield ekadashi_item
