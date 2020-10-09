@@ -8,15 +8,14 @@ import scrapy
 
 class EkadasiItem(scrapy.Item):
     name = scrapy.Field()
-    year = scrapy.Field()
-    day = scrapy.Field()
-    month = scrapy.Field()
+    description = scrapy.Field()
+    country = scrapy.Field()
+    event_date = scrapy.Field()
     starts = scrapy.Field()
     ends = scrapy.Field()
 
 
 class IskconEventItem(scrapy.Item):
     name = scrapy.Field()
-    month = scrapy.Field()
-    day = scrapy.Field()
-    year = scrapy.Field()
+    description = scrapy.Field()
+    event_date = scrapy.Field()
