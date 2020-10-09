@@ -7,6 +7,8 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+DEBUG = True
+
 BOT_NAME = 'vaishnavism'
 
 SPIDER_MODULES = ['vaishnavism.spiders']
@@ -62,10 +64,7 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-    #'vaishnavism.pipelines.VaishnavismPipeline': 300,
-    'vaishnavism.pipelines.VaishnavismPipelinePG': 300
-}
+# ITEM_PIPELINES = { 'vaishnavism.pipelines.VaishnavismPipeline': 300 }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
