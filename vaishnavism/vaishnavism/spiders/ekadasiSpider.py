@@ -1,6 +1,7 @@
 import re
 import scrapy
 from ..items import EkadasiItem
+from .helpers import MONTH_2_NUMBER
 
 
 class EkadasiSpider(scrapy.Spider):
@@ -8,7 +9,7 @@ class EkadasiSpider(scrapy.Spider):
     name = "ekadasi_spider"
     
     start_urls = [
-        "https://www.drikpanchang.com/vrats/ekadashidates.html?year=2020" 
+        "https://www.drikpanchang.com/vrats/ekadashidates.html?geoname-id=3530597"
     ]
 
 
@@ -19,18 +20,21 @@ class EkadasiSpider(scrapy.Spider):
         for event in event_card:
 
             date = event.css("div.dpEventDateTitle::text").get().split(",")
-            month, _ = date[0].split()
-            year = date[1].lstrip()
-            day = date[2].lstrip()
+            month, day = date[0].split()
+            year = date[1].strip()
             name = event.css("div.dpEventCardInfoTitle::text").get()
-            starts = re.findall("\d+:\d+", event.css("div::text")[-4].get())
-            ends = re.findall("\d+:\d+", event.css("div::text")[-2].get())
+            starts = re.findall("\d\d:\d\d", event.css("div::text")[-4].get())[0]
+            ends = re.findall("\d\d:\d\d", event.css("div::text")[-2].get())[0]
+
+            month = MONTH_2_NUMBER[month]
+
+            event_date = f"{year}-{month}-{day}"
 
             ekadashi_item = EkadasiItem(
-                month = month,
-                year = year,
-                day = day,
                 name = name,
+                description = "",
+                country = "Mexico",
+                event_date = event_date,
                 starts = starts,
                 ends = ends
             )
