@@ -1,11 +1,11 @@
 import scrapy
 from ..items import IskconEventItem
-
+from .helpers import MONTH_2_NUMBER, DAY_2_NUMBER
 
 
 class iskconCalendarSpider(scrapy.Spider):
    
-    name = "iskcon_calendar"
+    name = "iskcon_events_spider"
 
     start_urls = [
         "https://www.drikpanchang.com/iskcon/iskcon-event-calendar.html"
@@ -21,12 +21,15 @@ class iskconCalendarSpider(scrapy.Spider):
             date = [ datefield.lstrip() for datefield in date.split(",") ]
             month, day = date[0].split()
             year = date[1]
-            day = date[2]
+
+            month = MONTH_2_NUMBER[month]
+
+            event_date = f"{year}-{month}-{day}"
+            description = ""
 
             event_item = IskconEventItem(
                 name = name,
-                day = day,
-                month = month,
-                year = year, 
+                description = description,
+                event_date = event_date
             )
             yield event_item
