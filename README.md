@@ -24,14 +24,14 @@ This project is the data recolection tool that's used by another repository, see
   $ pip install -r requirements.txt
   ```
   
- 3. Run any of the following scrappers:
+3. If there won't be a connection to the database, comment the pipeline at settings.py. Otherwise leave it uncommented.
+  
+4. Run any of the following scrappers:
   ```
-  $ scrapy crawl <spider> > ekadsi.json
+  $ scrapy crawl <spider> -o ekadsi.csv 
   ```
   * Where spider is: ekadasi_spider or iskcon_events_spider
   
+
   
  The output files produced can be found at vaishnavism/vaishnavism/data.
- 
- 
- 
