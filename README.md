@@ -9,4 +9,4 @@ Until now, this are the kind of events fetched but I'd like to grow this project
 
 When the data is fetched it's automatically inserted to a Postgresql database hosted at Heroku.
 
-This project is the data recolection tool that's used by another repository, see: {}.
+This project is the data recolection tool that's used by another repository, see: https://github.com/daniel-sjkdm/VaishnavismNotifyTBot.
